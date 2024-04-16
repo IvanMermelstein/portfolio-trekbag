@@ -56,6 +56,36 @@ header {
   font-size: 14px;
 }
 
+.sidebar {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: #fffcf9;
+  border-left: 1px solid rgba(0, 0, 0, 0.07);
+  padding: 18px 25px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+form > input {
+  height: 45px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  margin: 12px 0 8px 0;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+form > input::placeholder {
+  font-style: italic;
+}
+
+h2 {
+  color: #231d15;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 h1 {
   font-size: 128px;
   font-weight: 600;
@@ -67,6 +97,49 @@ h1 {
   z-index: -1;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+}
+
+input {
+  font: inherit;
+}
+
+.button-group {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  background: none;
+}
+
+.btn {
+  height: 45px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: #473a2b;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: #322618;
+}
+
+.btn--secondary {
+  opacity: 0.85;
+  font-size: 14px;
 }
 
 @media (max-height: 950px) {
