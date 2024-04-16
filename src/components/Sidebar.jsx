@@ -1,4 +1,11 @@
 const Sidebar = () => {
+  const secondaryButtons = [
+    "Mark all as complete",
+    "Mark all as incomplete",
+    "Reset to inital",
+    "Remove all items",
+  ];
+
   return (
     <div className="sidebar">
       <form>
@@ -7,10 +14,13 @@ const Sidebar = () => {
         <ActionButton className="btn">Add to list</ActionButton>
       </form>
       <section className="button-group">
-        <ActionButton type={"secondary"}>Mark all as complete</ActionButton>
-        <ActionButton type={"secondary"}>Mark all as incomplete</ActionButton>
-        <ActionButton type={"secondary"}>Reset to inital</ActionButton>
-        <ActionButton type={"secondary"}>Remove all items</ActionButton>
+        {secondaryButtons.map((label) => {
+          return (
+            <ActionButton key={label} type={"secondary"}>
+              {label}
+            </ActionButton>
+          );
+        })}
       </section>
     </div>
   );
