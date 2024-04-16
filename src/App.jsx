@@ -1,5 +1,14 @@
+import BackgroundHeading from "./components/BackgroundHeading";
+import Footer from "./components/Footer";
+
 const App = () => {
-  return <>hi</>;
+  return (
+    <>
+      <BackgroundHeading />
+      <main></main>
+      <Footer />
+    </>
+  );
 };
 
 export default App;
