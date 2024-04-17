@@ -1,16 +1,37 @@
-const Sidebar = () => {
-  const secondaryButtons = [
-    "Mark all as complete",
-    "Mark all as incomplete",
-    "Reset to inital",
-    "Remove all items",
-  ];
+import { useState, useRef } from "react";
+import { secondaryButtons } from "../lib/constants";
+
+const Sidebar = ({ onAddItem }) => {
+  const [itemText, setItemText] = useState("");
+  const inputRef = useRef();
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    if (!itemText) {
+      alert("Item can't be empty");
+      inputRef.current.focus();
+      return;
+    }
+
+    onAddItem(itemText);
+    setItemText("");
+  };
 
   return (
     <div className="sidebar">
-      <form>
+      <form onSubmit={handleOnSubmit}>
         <h2>Add an item</h2>
-        <input type="text" />
+        <input
+          type="text"
+          value={itemText}
+          onChange={(e) => {
+            setItemText(e.target.value);
+          }}
+          ref={inputRef}
+          autoFocus
+          placeholder="toothbrush"
+        />
         <ActionButton className="btn">Add to list</ActionButton>
       </form>
       <section className="button-group">
