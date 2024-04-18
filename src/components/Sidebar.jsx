@@ -1,16 +1,39 @@
 import { useState, useRef } from "react";
-import { secondaryButtons } from "../lib/constants";
 
-const Sidebar = ({ onAddItem }) => {
+const Sidebar = ({
+  onAddItem,
+  handleRemoveAllItems,
+  handleResetToInitial,
+  handleMarkAllAsComplete,
+  handleMarkAllAsIncomplete,
+}) => {
   const [itemText, setItemText] = useState("");
   const inputRef = useRef();
+  const secondaryButtons = [
+    {
+      text: "Mark all as complete",
+      onClick: handleMarkAllAsComplete,
+    },
+    {
+      text: "Mark all as incomplete",
+      onClick: handleMarkAllAsIncomplete,
+    },
+    {
+      text: "Reset to initial",
+      onClick: handleResetToInitial,
+    },
+    {
+      text: "Remove all items",
+      onClick: handleRemoveAllItems,
+    },
+  ];
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    inputRef.current.focus();
 
     if (!itemText) {
       alert("Item can't be empty");
-      inputRef.current.focus();
       return;
     }
 
@@ -32,13 +55,13 @@ const Sidebar = ({ onAddItem }) => {
           autoFocus
           placeholder="toothbrush"
         />
-        <ActionButton className="btn">Add to list</ActionButton>
+        <ActionButton>Add to list</ActionButton>
       </form>
       <section className="button-group">
-        {secondaryButtons.map((label) => {
+        {secondaryButtons.map(({ text, onClick }) => {
           return (
-            <ActionButton key={label} type={"secondary"}>
-              {label}
+            <ActionButton key={text} onClick={onClick}>
+              {text}
             </ActionButton>
           );
         })}
@@ -47,9 +70,12 @@ const Sidebar = ({ onAddItem }) => {
   );
 };
 
-const ActionButton = ({ type, children }) => {
+const ActionButton = ({ buttonType, children, onClick }) => {
   return (
-    <button className={`btn ${type === "secondary" ? "btn--secondary" : ""}`}>
+    <button
+      className={`btn ${buttonType === "secondary" ? "btn--secondary" : ""}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

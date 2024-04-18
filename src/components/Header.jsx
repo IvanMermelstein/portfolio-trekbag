@@ -1,10 +1,17 @@
-const Header = () => {
+const Header = ({ numberOfItemsPacked, totalNumberOfItems }) => {
   return (
     <header>
       <img src={"./dots.png"} />
-      <p className="counter">
-        <b> 1 </b>/ 3 items packed
-      </p>
+      <section className="counter">
+        {totalNumberOfItems > 0 ? (
+          <p>
+            <b> {numberOfItemsPacked}</b> / {totalNumberOfItems}
+          </p>
+        ) : (
+          <b>No</b>
+        )}
+        items packed
+      </section>
     </header>
   );
 };

@@ -19,13 +19,69 @@ const App = () => {
     setItems([...items, newItem]);
   };
 
+  const handleDeleteItem = (id) => {
+    const newItems = items.filter((item) => item.id !== id);
+    setItems(newItems);
+  };
+
+  const handleToggleItem = (id) => {
+    const newItems = items.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          packed: !item.packed,
+        };
+      }
+      return item;
+    });
+
+    setItems(newItems);
+  };
+
+  const handleRemoveAllItems = () => {
+    setItems([]);
+  };
+
+  const handleResetToInitial = () => {
+    setItems(initialItems);
+  };
+
+  const handleMarkAllAsComplete = () => {
+    const newItems = items.map((item) => {
+      return { ...item, packed: true };
+    });
+
+    setItems(newItems);
+  };
+
+  const handleMarkAllAsIncomplete = () => {
+    const newItems = items.map((item) => {
+      return { ...item, packed: false };
+    });
+
+    setItems(newItems);
+  };
+
   return (
     <>
       <BackgroundHeading />
       <main>
-        <Header />
-        <ItemList items={items} />
-        <Sidebar onAddItem={handleAddItem} />
+        <Header
+          totalNumberOfItems={items.length}
+          numberOfItemsPacked={items.filter((item) => item.packed).length}
+        />
+        <ItemList
+          items={items}
+          handleToggleItem={handleToggleItem}
+          handleDeleteItem={handleDeleteItem}
+        />
+        <Sidebar
+          onAddItem={handleAddItem}
+          handleRemoveAllItems={handleRemoveAllItems}
+          handleResetToInitial={handleResetToInitial}
+          handleMarkAllAsComplete={handleMarkAllAsComplete}
+          handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
+        />
       </main>
       <Footer />
     </>

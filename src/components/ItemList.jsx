@@ -1,23 +1,47 @@
-const ItemList = ({ items }) => {
+const ItemList = ({ items, handleToggleItem, handleDeleteItem }) => {
   return (
-    <ul>
-      {items.map((item) => {
-        return <Item key={item.id} item={item} />;
-      })}
+    <ul className="item-list">
+      {items.length === 0 ? (
+        <EmptyView />
+      ) : (
+        items.map((item) => {
+          return (
+            <Item
+              key={item.id}
+              item={item}
+              onToggleItem={handleToggleItem}
+              onDeleteItem={handleDeleteItem}
+            />
+          );
+        })
+      )}
     </ul>
   );
 };
 
 export default ItemList;
 
-const Item = ({ item }) => {
+const Item = ({ item, onToggleItem, onleDeleteItem }) => {
   return (
     <li className="item">
       <label>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={item.packed}
+          onChange={() => onToggleItem(item.id)}
+        />
         {item.name}
       </label>
-      <button>❌</button>
+      <button onClick={() => onleDeleteItem(item.id)}>❌</button>
     </li>
+  );
+};
+
+const EmptyView = () => {
+  return (
+    <section className="empty-state">
+      <h3>Empty Packing List</h3>
+      <p>Start by adding some items you absolutely don't want to forget</p>
+    </section>
   );
 };
