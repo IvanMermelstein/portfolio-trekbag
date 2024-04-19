@@ -45,7 +45,7 @@ const ItemList = ({ items, handleToggleItem, handleDeleteItem }) => {
 
 export default ItemList;
 
-const Item = ({ item, onToggleItem, onleDeleteItem }) => {
+const Item = ({ item, onToggleItem, onDeleteItem }) => {
   return (
     <li className="item">
       <label>
@@ -56,7 +56,7 @@ const Item = ({ item, onToggleItem, onleDeleteItem }) => {
         />
         {item.name}
       </label>
-      <button onClick={() => onleDeleteItem(item.id)}>❌</button>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 };

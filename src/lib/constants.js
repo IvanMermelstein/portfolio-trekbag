@@ -30,3 +30,5 @@ export const sortingOptions = [
     value: "unpacked",
   },
 ];
+
+export const LS_ITEMS = "items";
