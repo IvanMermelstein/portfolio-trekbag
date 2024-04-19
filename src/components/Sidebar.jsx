@@ -1,14 +1,17 @@
 import { useState, useRef } from "react";
+import { useItemsContext } from "../lib/hooks";
 
-const Sidebar = ({
-  onAddItem,
-  handleRemoveAllItems,
-  handleResetToInitial,
-  handleMarkAllAsComplete,
-  handleMarkAllAsIncomplete,
-}) => {
+const Sidebar = () => {
+  const {
+    handleAddItem,
+    handleMarkAllAsComplete,
+    handleMarkAllAsIncomplete,
+    handleResetToInitial,
+    handleRemoveAllItems,
+  } = useItemsContext();
   const [itemText, setItemText] = useState("");
   const inputRef = useRef();
+
   const secondaryButtons = [
     {
       text: "Mark all as complete",
@@ -37,7 +40,7 @@ const Sidebar = ({
       return;
     }
 
-    onAddItem(itemText);
+    handleAddItem(itemText);
     setItemText("");
   };
 

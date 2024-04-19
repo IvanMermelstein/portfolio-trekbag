@@ -1,4 +1,10 @@
-const Header = ({ numberOfItemsPacked, totalNumberOfItems }) => {
+import { useItemsContext } from "../lib/hooks";
+
+const Header = () => {
+  const { items } = useItemsContext();
+  const numberOfItemsPacked = items.filter((item) => item.packed).length;
+  const totalNumberOfItems = items.length;
+
   return (
     <header>
       <img src={"./dots.png"} />
