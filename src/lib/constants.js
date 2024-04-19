@@ -15,3 +15,18 @@ export const initialItems = [
     packed: false,
   },
 ];
+
+export const sortingOptions = [
+  {
+    label: "Sort by default",
+    value: "default",
+  },
+  {
+    label: "Sort by packed",
+    value: "packed",
+  },
+  {
+    label: "Sort by unpacked",
+    value: "unpacked",
+  },
+];
