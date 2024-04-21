@@ -300,8 +300,7 @@ h1 {
 footer {
   width: min(972px, 100%);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   font-size: 12px;
   opacity: 0.5;
   margin-top: 12px;
