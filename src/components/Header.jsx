@@ -1,7 +1,10 @@
-import { useItemsContext } from "../lib/hooks";
+// import { useItemsContext } from "../lib/hooks";
+import { useItemsStore } from "../stores/itemsStore";
 
 const Header = () => {
-  const { items } = useItemsContext();
+  // const { items } = useItemsContext();
+  const items = useItemsStore((state) => state.items);
+
   const numberOfItemsPacked = items.filter((item) => item.packed).length;
   const totalNumberOfItems = items.length;
 

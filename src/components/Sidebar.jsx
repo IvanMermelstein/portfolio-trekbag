@@ -1,14 +1,24 @@
 import { useState, useRef } from "react";
-import { useItemsContext } from "../lib/hooks";
+import { useItemsStore } from "../stores/itemsStore";
+// import { useItemsContext } from "../lib/hooks";
 
 const Sidebar = () => {
-  const {
-    handleAddItem,
-    handleMarkAllAsComplete,
-    handleMarkAllAsIncomplete,
-    handleResetToInitial,
-    handleRemoveAllItems,
-  } = useItemsContext();
+  // const {
+  //   handleAddItem,
+  //   handleMarkAllAsComplete,
+  //   handleMarkAllAsIncomplete,
+  //   handleResetToInitial,
+  //   handleRemoveAllItems,
+  // } = useItemsContext();
+  const addItem = useItemsStore((state) => state.addItem);
+  const handleMarkAllAsComplete = useItemsStore(
+    (state) => state.markAllAsComplete
+  );
+  const handleMarkAllAsIncomplete = useItemsStore(
+    (state) => state.markAllAsIncomplete
+  );
+  const handleResetToInitial = useItemsStore((state) => state.resetToInitial);
+  const handleRemoveAllItems = useItemsStore((state) => state.removeAllItems);
   const [itemText, setItemText] = useState("");
   const inputRef = useRef();
 
@@ -40,7 +50,7 @@ const Sidebar = () => {
       return;
     }
 
-    handleAddItem(itemText);
+    addItem(itemText);
     setItemText("");
   };
 

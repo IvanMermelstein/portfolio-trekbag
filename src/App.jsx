@@ -3,18 +3,18 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import Sidebar from "./components/Sidebar";
-import ItemsContextProvider from "../src/contexts/ItemsContextProvider";
+// import ItemsContextProvider from "../src/contexts/ItemsContextProvider";
 
 const App = () => {
   return (
     <>
       <BackgroundHeading />
       <main>
-        <ItemsContextProvider>
-          <Header />
-          <ItemList />
-          <Sidebar />
-        </ItemsContextProvider>
+        {/* <ItemsContextProvider> */}
+        <Header />
+        <ItemList />
+        <Sidebar />
+        {/* </ItemsContextProvider> */}
       </main>
       <Footer />
     </>
